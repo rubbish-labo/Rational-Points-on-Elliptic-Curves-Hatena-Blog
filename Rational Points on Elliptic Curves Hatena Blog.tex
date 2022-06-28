@@ -1,0 +1,225 @@
+\documentclass [15pt,titlepage]{jarticle}
+\usepackage[italian]{babel} 
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} %chess package 
+\usepackage{xskak} 
+\usepackage{texmate}
+
+
+
+\usepackage{rsfso,graphics,comment}
+\usepackage{amsmath,amssymb,multicol}
+\usepackage{amsthm}
+\usepackage{color,multicol}
+\usepackage{skak,xskak,chessboard}
+\usepackage[hypertex]{hyperref}
+\usepackage{pifont}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+楕円曲線論入門
+J.H.シルヴァーマン／J.テイト　著
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+演習問題(1.6)
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{1.6.}
+\textbf{(a)}
+最初に分子を$t$で表す。
+\begin{align*}
+	a+b\cos\theta+c\sin\theta 
+		&=
+\displaystyle	
+	a+b(2\cos^2\frac{\theta}{2}-1)+2c\sin\frac{\theta}{2}\cos\frac{\theta}{2}\\
+		&=
+	\left(
+	\frac{a-b}{\cos^2\frac{\theta}{2}}+2c\cdot\frac{\sin\frac{\theta}{2}}{\cos\frac{\theta}{2}}+2b
+	\right)
+	\cdot\cos^2\frac{\theta}{2}\\
+		&=(a-b)+2c\cdot\frac{t}{1+t^2}+2b\cdot\frac{1}{1+t^2}\\
+		&=
+	\left\{
+		(a-b)(1+t^2)+2c\cdot t+2b
+	\right\}\frac{1}{1+t^2}\\
+		&=
+	\left\{
+		(a-b)t^2+2c\cdot t+a+b
+	\right\}\frac{1}{1+t^2}
+\end{align*}
+次にこれを用いてもとの積分を$t$で表す。
+\begin{eqnarray*}
+\displaystyle
+	\int\frac{a+b\cos\theta+c\sin\theta}
+			{d+e\cos\theta+f\sin\theta}d\theta
+	&=&
+	\int\frac{a+b(2\cos^2\frac{\theta}{2}-1)+2c\sin\frac{\theta}{2}\cos\frac{\theta}{2}}
+			{d+e(2\cos^2\frac{\theta}{2}-1)+2f\sin\frac{\theta}{2}\cos\frac{\theta}{2}}d\theta \\
+	&=&
+	\int\frac{(a-b)t^2+2c\cdot t+a+b}{(d-e)t^2+2f\cdot t+d+e}\cdot \frac{2}{1+t^2}dt
+\end{eqnarray*}
+
+
+\newpage
+
+\textbf{(b)}計算をする前に2つの公式の紹介と導出をする。\\
+($x,t$のどちらか一方で表そうとしたが疲れた。)
+
+\begin{eqnarray}
+\int x\log xdx
+	&=&\frac{1}{2}x^2\log x-\frac{1}{4}x^2 \\
+\int\frac{t^2}{1+t}dt
+	&=&\log\lvert1+t\rvert-\frac{1}{2}(t-3)(t+1)
+\end{eqnarray}
+
+(1)の式を求める。
+\begin{align*}
+\int x\log xdx
+	&=x(x\log x-x)-\int (x\log x-x)dx \\
+2\int x\log xdx
+	&=x(x\log x-x)+\frac{1}{2}x^2 \\
+\int x\log xdx
+	&=\frac{1}{2}x^2\log x-\frac{1}{4}x^2 \\
+\end{align*}
+
+(2)の式を求める。
+\begin{align*}
+\int\frac{t^2}{1+t}dt
+	&=
+\int t^2\left(\log\lvert1+t\rvert\right)^\prime dt	\\
+	&=
+t^2\log\lvert1+t\rvert-\int 2t\log\lvert1+t\rvert dt\\
+	&=
+t^2\log\lvert1+t\rvert-
+	2\int 
+	\left\{(1+t)\log\lvert1+t\rvert -\log\lvert1+t\rvert \right\}dt\\
+	&=
+t^2\log\lvert1+t\rvert
+-\left\{
+	(1+t)^2\log \lvert1+t\rvert-\frac{1}{2}(1+t)^2
+\right\}
++2\left\{(1+t)\log\lvert1+t\rvert-(1+t)\right\}\\
+	&=\log\lvert1+t\rvert-\frac{1}{2}(t-3)(t+1)
+\end{align*}
+
+\begin{align*}
+\int \{
+	(t-1)+\frac{1}{1+t}
+	\}
+\end{align*}
+で計算すれば楽になると後から気づいた。定数項は各々が好きにするといい。\\
+%mathematicaの計算と(2)の公式が一致したので今回の計算を採用した。
+
+\newpage
+最初に分母を$t$で表す。
+(\textbf{(a)}で求めた分子の式に$a=1,b=1,c=1$を
+代入すればいい事に見直し気づいたが、せっかくなので残した。)
+\begin{align*}
+1+\cos x+\sin x 
+	&=1+(2\cos^2\frac{x}{2}-1)+2\cos\frac{x}{2}\sin\frac{x}{2}\\
+	&=\frac{(1+t^2)+(1-t^2)+2t}{1+t^2}\\
+	&=2\cdot\frac{1+t}{1+t^2}
+\end{align*}
+
+\textbf{(a)}で求めた分子の式と先ほどの公式(2)を用いる。
+
+\begin{eqnarray*}
+\displaystyle
+	\int\frac{a+b\cos\theta+c\sin\theta}
+			{1+\cos\theta+\sin\theta}d\theta
+	&=&
+	\int\{(a-b)t^2+2c\cdot t+(a+b)\}\cdot\frac{1+t^2}{2(1+t)}\cdot\frac{2}{1+t^2}dt\\
+	&=&
+	\int
+	\left\{(a-b)\cdot\frac{t^2}{(1+t)}+2c\cdot\frac{t}{(1+t)}+(a+b)\cdot\frac{1}{(1+t)}\right\}dt\\
+	&=&
+	(a-b)\left\{\log\lvert1+t\rvert-\frac{1}{2}(t-3)(t+1)\right\}\\
+	&　&+2c\left(t-\log\lvert1+t\rvert\right)+(a+b)\log\lvert1+t\rvert\\
+	&=&
+2(a-c)\log\lvert1+t\rvert
+-\frac{1}{2}(a-b)(t-3)(t+1)+2c\cdot t
+\end{eqnarray*}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+演習問題(1.13)
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{1.13.}
+\textbf{(a)}
+\begin{align*}
+	\alpha	&=u^3+v^3						\\
+			&=(u+v)\{(u+v)^2-3uv\}		\tag{1}	\\
+			&=(u+v)\{(u-v)^2+uv\}		\tag{2}				
+\end{align*}
+　(1),(2)から$uv$の項を除去する。すると次の式が得られる。
+\begin{equation*}
+	4\alpha=(u+v)\{(u+v)^2+3(u-v)^2\}
+\end{equation*}
+式変形をして
+\begin{align*}
+	4\alpha		&=(u+v)\{(u+v)^2+3(u-v)^2\}\\
+	\frac{4\alpha}{(u+v)^3}
+				&=1+3\frac{(u-v)^2}{(u+v)^2}
+\end{align*}
+　4と3の最小公倍数が12であるから12の倍数であたりをつけた。\\
+あとは素因数分解で両辺の2と3の指数を合わせる。
+\begin{align*}			
+	4\alpha
+	\left(\frac{x}{12\alpha}\right)^3		
+				&=1+3\left(\frac{y}{36\alpha}\right)^2	\\
+	 y^2			&=x^3-432\alpha^2			
+\end{align*}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+演習問題(1.16)
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{1.16.}
+\textbf{(a)}
+\begin{align*}
+L
+	&=4\int^\frac{\pi}{2}_0
+		\sqrt{
+			(\{\alpha\sin\theta)^{\prime}\}^2+\{(\beta\cos\theta)^{\prime}\}^2
+			}\cdot d\theta\\
+	&=4\int^\frac{\pi}{2}_0
+		\sqrt{
+			(\alpha\cos\theta)^2+(\beta\sin\theta)^2
+			}\cdot d\theta\\
+	&=4\alpha\int^\frac{\pi}{2}_0\sqrt{
+			\cos^2\theta+\left(\frac{\beta}{\alpha}\right)^2\sin^2\theta
+				}\cdot d\theta\\
+	&=4\alpha\int^\frac{\pi}{2}_0\sqrt{1-\left(1-\frac{\beta^2}{\alpha^2}\right)\sin^2\theta
+				}\cdot d\theta\\
+	&=4\alpha\int^\frac{\pi}{2}_0\sqrt{1-k^2\sin^2\theta}\cdot d\theta\\
+\end{align*}
+
+
+\textbf{(b)
+$\alpha=\beta$}
+\begin{align*}
+\displaystyle
+L
+	&=4\alpha\int^\frac{\pi}{2}_0 d\theta\\
+	&=4\alpha\left[\frac{\pi}{2}-0\right]\\
+	&=2\alpha\pi
+\end{align*}
+
+
+\textbf{(c)}
+\begin{align*}
+\displaystyle
+4\alpha\int^1_0\sqrt{\frac{1-k^2t^2}{1-t^2}}dt=4\alpha\int^1_0\frac{1-k^2t^2}{\sqrt{(1-t^2)(1-k^2t^2)}}dt
+\end{align*}
+　
+
+\end{document}
